@@ -1,6 +1,7 @@
 class BoardController < ApplicationController
   def index
-    render plain:"Hello,World"
+    @msg = "Hello, World!"
+    render 'board/index'
   end
 
 end
