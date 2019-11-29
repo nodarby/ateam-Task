@@ -4,4 +4,8 @@ class BoardsController < ApplicationController
     @topics=Topic.all
   end
 
+  def new
+    @msg = "Create"
+    @topic = Topic.new
+  end
 end

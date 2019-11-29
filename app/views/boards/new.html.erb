@@ -1,0 +1,5 @@
+<div id ='main'>
+  <%= @msg %>
+  <%= render partial: 'form', locals:{topic: @topic}%>
+  <%= link_to 'Back', boards_path %>
+</div>
