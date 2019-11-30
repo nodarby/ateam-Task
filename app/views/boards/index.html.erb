@@ -1,5 +1,25 @@
 <div id ='main'>
-  <%= @msg %>
+  <p id="notice"><%= notice %></p>
 
+  <h1>Topics</h1>
+
+  <table>
+    <thead>
+      <tr>
+        <th>Title</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @topics.each do|topic| %>
+      <tr>
+        <td><%= topic.title %></td>
+        <td><%= link_to 'Show', board_path(topic) %></td>
+        <td><%= link_to 'Edit', edit_board_path(topic) %></td>
+        <td><%= link_to 'Destroy', board_path(topic), method: :delete, data: {confirm: "OK?"} %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
   <%= link_to 'New topic', new_board_path %>
 </div>

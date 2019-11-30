@@ -1,0 +1,19 @@
+<div id ='main'>
+  <h1>スレッドを編集</h1>
+
+  <%= form_for(@topic, :url => board_path(@topic))  do |f| %>
+
+
+    <div class="field">
+      <%= f.label :title %>
+      <%= f.text_field :title %>
+    </div>
+
+    <div class="actions">
+      <%= f.submit %>
+    </div>
+  <% end %>
+
+  <%= link_to 'Show', board_path(@topic.id) %>
+  <%= link_to 'Back', boards_path %>
+</div>
