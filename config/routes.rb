@@ -4,7 +4,6 @@ Rails.application.routes.draw do
   resources :boards
 
 
-  resources :posts
-  post 'posts/create' => 'posts#create', as: :post_create
+  resources :posts, only: [:create, :destroy]
 
 end
