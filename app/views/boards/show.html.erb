@@ -5,11 +5,17 @@
   <%= @topic.title %>
 </p>
 
-<% @posts.each_with_index do |post , idx| %>
-  <p>
-    <%= idx + 1 %>: <%= post.text %>
-  </p>
-<% end %>
+<table>
+  <tbody>
+  <% @posts.each_with_index do |post , idx| %>
+    <tr>
+      <td><%= idx + 1 %></td>
+      <td><%= post.text %></td>
+      <td><%= link_to 'Destroy', post_path(post), method: :delete, data: {confirm: "OK?"} %></td>
+    </tr>
+  <% end %>
+  </tbody>
+</table>
 
 
 <h3>新規投稿</h3>

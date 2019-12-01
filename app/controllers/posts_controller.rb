@@ -14,14 +14,22 @@ class PostsController < ApplicationController
     end
   end
 
+  before_action :set_post, only: [:destroy]
 
-  private
-  def set_topic
-    @topic = Topic.find(params[:id])
+  def destroy
+    @post.destroy
+
+    respond_to do |format|
+      format.html { redirect_to({controller: :boards, action: :show, id: @post.topic_id}, notice: '投稿が削除されました')}
+      format.json { head :no_content}
+    end
   end
 
-  def set_posts
-    @posts = Post.find_by(topic_id: params[:id])
+
+  private
+
+  def set_post
+    @post = Post.find(params[:id])
   end
 
   def post_params
