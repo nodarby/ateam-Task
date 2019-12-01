@@ -1,11 +1,9 @@
 class BoardsController < ApplicationController
   def index
-    @msg = "Hello, World!"
-    @topics=Topic.all
+    @topics=Topic.all.order(id: "DESC")
   end
 
   def new
-    @msg = "Create"
     @topic = Topic.new
   end
 
@@ -26,6 +24,8 @@ class BoardsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def show
+    @posts = Post.where(topic_id: params[:id])
+    @newpost = Post.new(:topic_id => params[:id])
   end
 
   def edit
@@ -55,6 +55,10 @@ class BoardsController < ApplicationController
   private
     def set_topic
       @topic = Topic.find(params[:id])
+    end
+
+    def set_posts
+      @posts = Post.find_by(topic_id: params[:id])
     end
 
     def topic_params
