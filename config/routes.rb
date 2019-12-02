@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :boards
 
   resources :posts, only: [:create, :show, :destroy] do
-    resources :comments, only: [:create]
+    resources :comments, only: [:create, :destroy]
   end
 
 end

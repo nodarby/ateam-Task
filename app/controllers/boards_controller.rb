@@ -1,6 +1,6 @@
 class BoardsController < ApplicationController
   def index
-    @topics=Topic.all.order(id: "DESC")
+    @topics=Topic.search(params[:search]).order(id: "DESC")
   end
 
   def new
@@ -24,7 +24,7 @@ class BoardsController < ApplicationController
   before_action :set_topic, only: [:show, :edit, :update, :destroy]
 
   def show
-    @posts = Post.where(topic_id: params[:id])
+    @posts = Post.where(topic_id: params[:id]).search(params[:search])
     @newpost = Post.new(:topic_id => params[:id])
   end
 

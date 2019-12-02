@@ -8,8 +8,9 @@
   <tbody>
   <% @comments.each_with_index do |comment , idx| %>
     <tr>
-      <td>＞<%= idx + 1 %>.</td>
+      <td>＞</td>
       <td><%= comment.text %></td>
+      <td><%= link_to '削除', post_comment_path(:post_id => @post.id, :id => comment.id), method: :delete, data: {confirm: "本当に削除しますか?"} %></td>
     </tr>
   <% end %>
   </tbody>
@@ -18,7 +19,7 @@
 
 <h3>コメント投稿</h3>
 <%= form_for @newcomment, :url => post_comments_path(@post.id) do |f| %>
-  <p><%= f.text_area :text %></p>
+  <p><%= f.text_area :text,:size=>"40"%></p>
   <%= f.hidden_field :post_id %>
   <%= f.submit %>
 <% end %>
