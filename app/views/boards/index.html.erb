@@ -1,0 +1,31 @@
+<div id ='main'>
+  <p id="notice"><%= notice %></p>
+
+  <h1>掲示板</h1>
+
+  <%= form_tag boards_path, :method => 'get' do %>
+    <p>
+      <%= text_field_tag :search, params[:search] %>
+      <%= submit_tag "Search", :name => nil %>
+    </p>
+  <% end %>
+
+  <table>
+    <thead>
+      <tr>
+        <th>スレッド</th>
+      </tr>
+    </thead>
+
+    <tbody>
+      <% @topics.each do|topic| %>
+      <tr>
+        <td><%= link_to topic.title, board_path(topic) %></td>
+        <td><%= link_to '編集', edit_board_path(topic) %></td>
+        <td><%= link_to '削除', board_path(topic), method: :delete, data: {confirm: "本当に削除しますか?"} %></td>
+      </tr>
+      <% end %>
+    </tbody>
+  </table>
+  <%= link_to '新規スレッド作成', new_board_path %>
+</div>
