@@ -10,6 +10,7 @@
     <tr>
       <td><%= idx + 1 %>.</td>
       <td><%= post.text %></td>
+      <td><%= link_to "コメントを見る", post_path(post) %></td>
       <td><%= link_to '削除', post_path(post), method: :delete, data: {confirm: "OK?"} %></td>
     </tr>
   <% end %>

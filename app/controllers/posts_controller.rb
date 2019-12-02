@@ -14,7 +14,12 @@ class PostsController < ApplicationController
     end
   end
 
-  before_action :set_post, only: [:destroy]
+  before_action :set_post, only: [:show, :destroy]
+
+  def show
+    @comments = Comment.where(post_id: params[:id])
+    @newcomment = Comment.new(:post_id => params[:id])
+  end
 
   def destroy
     @post.destroy

@@ -57,10 +57,6 @@ class BoardsController < ApplicationController
       @topic = Topic.find(params[:id])
     end
 
-    def set_posts
-      @posts = Post.find_by(topic_id: params[:id])
-    end
-
     def topic_params
       params.require(:topic).permit(:title)
     end
