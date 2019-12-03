@@ -5,7 +5,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to({controller: :boards, action: :show, id: @comment.post_id}, notice: '返信を行いました')}
+        format.html { redirect_to({controller: :posts, action: :show, id: @comment.post_id}, notice: '返信を行いました')}
         format.json { render action :show, status: :created, location: @comment}
       else
         format.html {render action :show , id: @comment.id }

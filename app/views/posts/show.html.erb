@@ -18,7 +18,7 @@
 
 
 <h3>コメント投稿</h3>
-<%= form_for @newcomment, :url => post_comments_path(@post.id) do |f| %>
+<%= form_for @newcomment, :url => post_comments_path(@post) do |f| %>
   <p><%= f.text_area :text,:size=>"40"%></p>
   <%= f.hidden_field :post_id %>
   <%= f.submit %>
